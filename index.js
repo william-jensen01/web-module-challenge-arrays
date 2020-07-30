@@ -151,14 +151,14 @@ hint - you can use the .includes method to help you solve this */
 
 function filterByWord(array,string){
     filtered_array = [];
-    for (let word of array) {
-        if (word.includes(string)) {
-            filtered_array.push(word);
+    for (let flavor of array) {
+        if (flavor.includes(string)) {
+            filtered_array.push(flavor);
         }
     }
-    return filtered_array;
+    console.log(filtered_array);
 }
-console.log(filterByWord(originalFlavors, "Chocolate"));
+filterByWord(originalFlavors, "Chocolate");
 
 
 /* 🧁🍦🍨 STRETCH 🍨🍦🍫*/ 
@@ -174,13 +174,21 @@ and should return the average number of words per item in the array.
 For example, getAverageWordLength(originalFlavors) should return a number between 0 and 3. */
 
 function getAverageWordLength(array){
-    for (const flavor of array) {
-        for(const word in flavor) {
-            console.log(flavor)
+    let average_words_count = 0;
+    let count;
+    for (i = 0; i < array.length; i++) {
+        if (array[i].includes(" ")) {
+            const flavor = array[i];
+            const flavor_spaces = (flavor.split(" ").length);
+            count = average_words_count + flavor_spaces;
+        }
+        else {
+            average_words_count++;
         }
     }
+    console.log(count)
 }
-console.log(getAverageWordLength(originalFlavors));
+getAverageWordLength(originalFlavors);
 
 /* STRETCH 2: Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors.
 
